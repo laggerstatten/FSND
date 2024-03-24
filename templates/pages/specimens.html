@@ -1,0 +1,20 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Specimen List{% endblock %}
+{% block content %}
+<ul class="items">
+    {% for specimen in specimens %}
+    <li>
+        <div class="item">
+            <h5>Specimen ID: {{ specimen.specimen_id }}</h5>
+            <p>Institution ID: {{ specimen.institution_id }}</p>
+            <p>Institution Name: {{ specimen.institution_name }}</p>
+            <p>Animal ID: {{ specimen.animal_id }}</p>
+            <p>Animal Genus: {{ specimen.animal_genus }}</p>
+            <p>Sighting Date: {{ specimen.sightingdate }}</p>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+<!-- TODO: update -->

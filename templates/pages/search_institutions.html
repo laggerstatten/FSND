@@ -1,0 +1,20 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Specimen Finder | Institutions Search{% endblock %}
+{% block content %}
+<h3>Number of search results for "{{ search_term }}": {{ results.count }}</h3>
+<ul class="items">
+    {% for institution in results.data %}
+    <li>
+        <a href="/institutions/{{ institution.id }}">
+             <!-- TODO change icon-->
+            <i class="fas fa-users"></i>
+            <div class="item">
+                <h5>{{ institution.name }}</h5>
+            </div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+<!-- TODO: update -->

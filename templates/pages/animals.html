@@ -1,0 +1,54 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Specimen Finder | Animals{% endblock %}
+{% block content %}
+<ul class="items">
+    {% for animal in animals %}
+    <li id="{{ animal.id }}" style="display: flex;">
+        <a href="/animal/{{ animal.id }}">
+            <!-- TODO change icon-->
+            <i class="fas fa-car"></i>
+            <div class="item">
+                <h5>Animal ID: {{ animal.id }}</h5>
+                <p>Genus: {{ animal.genus }}</p>
+                <p>Species: {{ animal.species }}</p>
+            </div>
+        </a>
+        <button class="delete-button" data-id="{{ animal.id }}">&cross;</button>
+    </li>
+    {% endfor %}
+</ul>
+
+<script>
+    const deleteBtns = document.querySelectorAll('.delete-button');
+    for (let i = 0; i < deleteBtns.length; i++) {
+        const btn = deleteBtns[i];
+        btn.onclick = function (e) {
+            const animalId = e.target.dataset['id'];
+            fetch('/animal/' + animalId , {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    window.location.href = "/animal"; // Redirect to the animals page after successful deletion
+                } else {
+                    throw new Error('Failed to delete animal');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                // You can add error handling here if needed
+            });
+        }
+    }
+</script>
+
+{% endblock %}
+
+
+
+
+
+<!-- TODO: update -->

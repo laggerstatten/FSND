@@ -1,0 +1,16 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Edit Institution{% endblock %}
+{% block content %}
+  <div class="form-wrapper">
+    <form class="form" method="post" action="/institutions/{{institution.id}}/edit">
+      <h3 class="form-heading">Edit institution <em>{{ institution.name }}</em></h3>
+      <div class="form-group">
+        <label for="name">Name</label>
+        {{ form.name(class_ = 'form-control', autofocus = true, value=institution.name) }}
+      </div>
+      <input type="submit" value="Edit Institution" class="btn btn-primary btn-lg btn-block">
+    </form>
+  </div>
+{% endblock %}
+
+<!-- TODO: update -->

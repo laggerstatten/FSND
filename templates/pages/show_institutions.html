@@ -1,0 +1,19 @@
+{% extends 'layouts/main.html' %}
+{% block title %}{{ institution.name }} | Institution{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-6">
+		<h1 class="monospace">
+			{{ institution.name }}
+		</h1>
+		<p class="subtitle">
+			ID: {{ institution.id }}
+		</p>
+	</div>
+</div>
+
+<a href="/institutions/{{ institution.id }}/edit"><button class="btn btn-primary btn-lg">Edit</button></a>
+
+{% endblock %}
+
+<!-- TODO: update -->

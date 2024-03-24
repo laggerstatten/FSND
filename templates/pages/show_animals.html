@@ -1,0 +1,41 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Animal Information{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-6">
+		<h1 class="monospace">
+			{{ animal.name }}
+		</h1>
+		<p class="subtitle">
+			ID: {{ animal.id }}
+		</p>
+		<div class="info">
+			<p>Genus: {{ animal.genus }}</p>
+			<p>Species: {{ animal.species }}</p>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<img src="{{ animal.image_link }}" alt="Animal Image" />
+	</div>
+</div>
+<!-- TODO find where features come from -->
+<section>
+	<h2 class="monospace">{{ animal.features_count }} Features</h2>
+	<ul class="features-list">
+		{% for feature in animal.features %}
+		<li>{{ feature }}</li>
+		{% endfor %}
+	</ul>
+</section>
+
+<a href="/animals/{{ animal.id }}/edit"><button class="btn btn-primary btn-lg">Edit</button></a>
+<!-- <div class="row">
+	<form class="col-sm-6" action="/animals/delete" method="POST">
+		<input type="submit" value="Delete Animal" class="btn btn-primary btn-lg">
+		<input type='text' name="animal_id" value={{animal.id}} style="display: none;">
+	</form>
+</div> -->
+
+{% endblock %}
+
+<!-- TODO: update -->

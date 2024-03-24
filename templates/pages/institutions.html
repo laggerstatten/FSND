@@ -1,0 +1,20 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Specimen Finder | Institutions{% endblock %}
+{% block content %}
+<ul class="items">
+    {% for institution in institutions %}
+    <li>
+        <a href="/institutions/{{ institution.id }}">
+            <!-- TODO change icon-->
+            <i class="fas fa-user"></i>
+            <div class="item">
+                <h5>{{ institution.name }}</h5>
+                <p>Address: {{ institution.address }}</p>
+            </div>
+        </a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
+<!-- TODO: update -->
